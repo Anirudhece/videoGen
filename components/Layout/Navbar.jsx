@@ -21,6 +21,7 @@ import {
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { BsStack } from "react-icons/bs";
 import { AiOutlinePlaySquare } from "react-icons/ai";
+import DragDrop from "./DragDrop";
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -34,11 +35,10 @@ export default function Navbar() {
             <ModalHeader>Modal Title</ModalHeader>
             <ModalCloseButton />
 
-            
-
+            <DragDrop />
 
             <ModalFooter>
-              <Button colorScheme="blue" mr={3} onClick={onClose}>
+              <Button colorScheme="black" mr={3} onClick={onClose}>
                 Close
               </Button>
               <Button variant="ghost">Secondary Action</Button>
