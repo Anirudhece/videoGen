@@ -6,22 +6,21 @@ const { Dragger } = Upload;
 
 const DragDrop = () => {
   const [uploadedFile, setUploadedFile] = useState(null);
-
   const props = {
     name: "file",
     multiple: true,
     action: "https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188",
+    accept: "video/*", // Specify that only video files are allowed
     onChange(info) {
       const { status } = info.file;
       if (status !== "uploading") {
-        // console.log(info.file, info.fileList);
+        console.log(info.file, info.fileList);
       }
       if (status === "done") {
-        message.success(`${info.file.name} file uploaded successfully.`);
-        setUploadedFile(info.file); // Set the uploaded file to state
-        console.log("this is uploaded", uploadedFile);
+        message.success(`${info.file.name} video uploaded successfully.`);
+        setUploadedFile(info.file);
       } else if (status === "error") {
-        message.error(`${info.file.name} file upload failed.`);
+        message.error(`${info.file.name} video upload failed.`);
       }
     },
     onDrop(e) {
