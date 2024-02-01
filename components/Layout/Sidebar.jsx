@@ -11,7 +11,6 @@ import {
   Drawer,
   DrawerContent,
   useDisclosure,
-  Center,
 } from "@chakra-ui/react";
 import { FiCompass, FiMenu } from "react-icons/fi";
 import { BsGrid1X2 } from "react-icons/bs";
@@ -38,31 +37,33 @@ const LinkItems = [
 export default function SimpleSidebar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box
-      minH="100vh"
-      // bg={useColorModeValue("WhiteAlpha.600", "WhiteAlpha.600")}
-      //   bg="#FC8181"
-    >
-      <SidebarContent
-        onClose={() => onClose}
-        display={{ base: "none", md: "block" }}
-      />
-      <Drawer
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        returnFocusOnClose={false}
-        onOverlayClick={onClose}
-        size="full"
-        bg="#FC8181"
+    <>
+      <Box
+        w={{ base: "40", md: "40" }} // Set a fixed width for both base and md screen sizes
+        pos="fixed"
+        h="full"
       >
-        <DrawerContent>
-          <SidebarContent onClose={onClose} />
-        </DrawerContent>
-      </Drawer>
-      <MobileNav display={{ base: "flex", md: "none" }} onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4"></Box>
-    </Box>
+        <SidebarContent
+          onClose={() => onClose}
+          display={{ base: "none", md: "block" }}
+        />
+        <Drawer
+          isOpen={isOpen}
+          placement="left"
+          onClose={onClose}
+          returnFocusOnClose={false}
+          onOverlayClick={onClose}
+          size="full"
+          bg="#FC8181"
+        >
+          <DrawerContent>
+            <SidebarContent onClose={onClose} />
+          </DrawerContent>
+        </Drawer>
+        <MobileNav display={{ base: "flex", md: "none" }} onOpen={onOpen} />
+        {/* <Box ml={{ base: 0, md: 60 }} p="4"></Box> */}
+      </Box>
+    </>
   );
 }
 
@@ -101,18 +102,18 @@ const NavItem = ({ icon, children }) => {
         borderRadius="lg"
         role="group"
         cursor="pointer"
-        // _hover={{
-        //   bg: "cyan.400",
-        //   color: "white",
-        // }}
+        _hover={{
+          bg: "cyan.400",
+          color: "white",
+        }}
       >
         <Box>
           {icon && (
             <Icon
               fontSize="2xl"
-              //   _groupHover={{
-              //     color: "white",
-              //   }}
+              _groupHover={{
+                color: "white",
+              }}
               as={icon}
             />
           )}
